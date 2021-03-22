@@ -1,0 +1,19 @@
+modLoader="javafml" #mandatory
+loaderVersion="[35,)" #mandatory
+license="All rights reserved" #mandatory https://choosealicense.com/
+
+ 
+[[mods]] #mandatory
+modId="summoningscepters" #mandatory
+version="1.0" #mandatory
+displayName="SummoningScepters" #mandatory
+logoFile="zombie_tome.png"
+
+credits="YouTube, lmao.  Also Forge documentation." #optional
+authors="Professor Zoom" #optional
+description='''
+Hey!  You made it to the description.
+...
+I wish I had something fun to say here.
+
+''' #mandatory

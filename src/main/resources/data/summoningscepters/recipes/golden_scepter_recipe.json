@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #E",
+    "GT#",
+    "TG "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_block"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "T": {
+      "item": "summoningscepters:reinforced_grip"
+    }
+  },
+  "result": {
+    "item": "summoningscepters:golden_scepter",
+    "count": 1
+  }
+}

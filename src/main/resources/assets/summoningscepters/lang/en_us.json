@@ -1,0 +1,15 @@
+{
+  "itemGroup.summoningTab": "Summoning Scepters",
+  "item.summoningscepters.wooden_staff": "Wooden Staff",
+  "item.summoningscepters.golden_scepter": "Golden Scepter",
+  "item.summoningscepters.obsidian_scepter": "Obsidian Scepter",
+  "item.summoningscepters.reinforced_grip": "Reinforced Grip",
+
+  "item.summoningscepters.zombie_summon_tome": "Zombie Tome",
+  "item.summoningscepters.skeleton_summon_tome": "Skeleton Tome",
+  "item.summoningscepters.stray_summon_tome": "Stray Tome",
+  "item.summoningscepters.wither_skeleton_summon_tome": "Wither Skeleton Tome",
+  "item.summoningscepters.horse_summon_tome": "Horse Tome",
+
+  "block.summoningscepters.lightning_rod": "Lightning Rod"
+}

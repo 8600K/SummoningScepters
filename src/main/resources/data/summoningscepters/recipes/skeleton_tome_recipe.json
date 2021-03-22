@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "BSB",
+    "BZB"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "item": "minecraft:skeleton_skull"
+    },
+    "Z": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "summoningscepters:skeleton_summon_tome",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " #D",
+        " A#",
+        "A  "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:ender_pearl"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "minecraft:logs"
+        }
+    },
+    "result": {
+        "item": "summoningscepters:wooden_staff",
+        "count": 1
+    }
+}

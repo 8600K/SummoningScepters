@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #E",
+    "#T#",
+    "T# "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "T": {
+      "item": "summoningscepters:reinforced_grip"
+    }
+  },
+  "result": {
+    "item": "summoningscepters:obsidian_scepter",
+    "count": 1
+  }
+}
