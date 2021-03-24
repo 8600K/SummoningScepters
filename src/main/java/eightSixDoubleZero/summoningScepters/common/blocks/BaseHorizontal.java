@@ -9,7 +9,6 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -20,14 +19,16 @@ import java.util.Map;
 
 public class BaseHorizontal extends Block {
 
+    protected static final Map<Block, Map<Direction, VoxelShape>> SHAPES = new HashMap<Block, Map<Direction, VoxelShape>>();
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-    protected static final Map<Direction, VoxelShape> SHAPES = new HashMap<Direction, VoxelShape>();
+
 
     public BaseHorizontal(Properties properties) {
         super(properties);
-
+        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.getRotation(state.getValue(HORIZONTAL_FACING)));
@@ -40,7 +41,7 @@ public class BaseHorizontal extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getNearestLookingDirection().getOpposite());
+        return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -49,23 +50,27 @@ public class BaseHorizontal extends Block {
         builder.add(HORIZONTAL_FACING);
     }
 
-    protected static void calculateShapes(Direction to, VoxelShape shape) {
+
+
+    protected static VoxelShape calculateShapes(Direction to, VoxelShape shape) {
         VoxelShape[] buffer = new VoxelShape[] { shape, VoxelShapes.empty() };
 
         int times = (to.get3DDataValue() - Direction.NORTH.get3DDataValue() + 4) % 4;
         for (int i = 0; i < times; i++) {
             buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = VoxelShapes.or(buffer[1],
-                    VoxelShapes.create(AxisAlignedBB.ofSize(1 - maxZ, minY, minX))));
+                    VoxelShapes.box(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
             buffer[0] = buffer[1];
             buffer[1] = VoxelShapes.empty();
         }
 
-        SHAPES.put(to, buffer[0]);
+        return buffer[0];
     }
 
     protected void runCalculation(VoxelShape shape) {
+        SHAPES.put(this, new HashMap<Direction, VoxelShape>());
+        Map<Direction, VoxelShape> facingMap = SHAPES.get(this);
         for (Direction direction : Direction.values()) {
-            calculateShapes(direction, shape);
+            facingMap.put(direction, calculateShapes(direction, shape));
         }
     }
 

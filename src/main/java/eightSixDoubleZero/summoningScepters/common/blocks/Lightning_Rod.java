@@ -19,7 +19,7 @@ public class Lightning_Rod extends BaseHorizontal{
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return SHAPES.get(state.getValue(HORIZONTAL_FACING));
+        return SHAPES.get(this).get(state.getValue(HORIZONTAL_FACING));
     }
 
     public Lightning_Rod(Properties properties) {
