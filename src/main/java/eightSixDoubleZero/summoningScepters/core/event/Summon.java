@@ -36,6 +36,7 @@ public class Summon {
         ITextComponent hopliteZombie = new StringTextComponent("\u00A76Hoplite");
 
         //Create the zombie from the SummonedZombie class that overrides some methods.
+        //Add more mobs for future releases.
         SummonedZombie zombie = new SummonedZombie(EntityType.ZOMBIE, worldIn);
 
 
@@ -155,7 +156,7 @@ public class Summon {
             skeleton.setItemInHand(Hand.MAIN_HAND, item);
             skeleton.setCustomName(rangerSkeleton);
 
-
+            timeKeeper(skeleton, mobDmg, 30000);
 
         } else if(type == 2)
         {
@@ -173,7 +174,7 @@ public class Summon {
             skeleton.getAttribute(Attributes.MAX_HEALTH).setBaseValue(24.0);
             skeleton.setCustomName(clericSkeleton);
 
-
+            timeKeeper(skeleton, mobDmg, 40000);
 
         } else {
 
@@ -262,7 +263,7 @@ public class Summon {
     }
 
 
-    public static void summonHorse(PlayerInteractEvent event, int damageAmt)
+    public static void summonHorse(PlayerInteractEvent event, int damageAmt, int delay)
     {
 
         PlayerEntity entity = event.getPlayer();
@@ -282,7 +283,7 @@ public class Summon {
         horse.setPos(entity.getX() + 1, entity.getY(), entity.getZ());
         worldIn.addFreshEntity(horse);
 
-        timeKeeper(horse, mobDmg, 300000);
+        timeKeeper(horse, mobDmg, delay);
     }
 
     public static void summonStray(PlayerInteractEvent event, int damageAmt, int type)

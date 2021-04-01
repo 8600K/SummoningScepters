@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -66,9 +67,18 @@ public class EventHandler {
                 Summon.summonStray(event, 8, 2);
             }
         } else if (entity.getItemInHand(Hand.OFF_HAND).getItem() == ItemInit.HORSE_SUMMON_TOME.get()) {
-            if ((entity.getItemInHand(Hand.MAIN_HAND).getItem() == ItemInit.GOLDEN_SCEPTER.get() && ItemInit.GOLDEN_SCEPTER.get().use(worldIn, entity, Hand.MAIN_HAND).getResult() == ActionResultType.SUCCESS) || (entity.getItemInHand(Hand.MAIN_HAND).getItem() == ItemInit.OBSIDIAN_SCEPTER.get() && ItemInit.OBSIDIAN_SCEPTER.get().use(worldIn, entity, Hand.MAIN_HAND).getResult() == ActionResultType.SUCCESS)) {
-                Summon.summonHorse(event, 6);
+
+            //Current Change with the horse.
+            if(entity.getItemInHand(Hand.MAIN_HAND).getItem() == ItemInit.WOODEN_STAFF.get())
+            {
+                Summon.summonHorse(event, 4, 60000);
+            } else if (entity.getItemInHand(Hand.MAIN_HAND).getItem() == ItemInit.GOLDEN_SCEPTER.get()) {
+                Summon.summonHorse(event, 5, 180000);
+            } else if (entity.getItemInHand(Hand.MAIN_HAND).getItem() == ItemInit.OBSIDIAN_SCEPTER.get())
+            {
+                Summon.summonHorse(event, 6, 300000);
             }
+
         }
 
 
